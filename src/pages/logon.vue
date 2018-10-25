@@ -13,7 +13,6 @@
         <mt-field label="管理员账号" placeholder="请输入账号" v-model="orgName" class="zi"></mt-field>
         <mt-field></mt-field>
         <mt-button type="primary" class="deng" @click="account" id="1">登陆</mt-button>
-        <mt-button type="primary" class="deng">登陆</mt-button>
         <div class="button">
             <span>Copyright 2018 Beijing Fenbuzhihui Technology Co., Ltd. All rights reserved.</span>
         </div>
