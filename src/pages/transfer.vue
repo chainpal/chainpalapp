@@ -33,6 +33,8 @@
     </div>
 </template>
 <script>
+
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
@@ -45,7 +47,19 @@ export default {
     },
     methods:{
         account(){
-            this.$router.push({ path: "/account" });
+            if(this.out===""){
+                Toast("请输入转出账户")
+            }else if(this.shift===""){
+                Toast("请输入转入账户")
+            }else if(this.money===""){
+                Toast("请输入金额")
+            }else{
+                Toast({
+  message: '操作成功',
+  iconClass: 'icon icon-success'
+});
+            }
+            // this.$router.push({ path: "/account" });
         },
         commodity(){
             this.$router.push({ path: "/commodity" });

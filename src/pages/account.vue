@@ -11,7 +11,7 @@
         </div>
         <mt-field label="账户名" placeholder="请输入账号" v-model="username" class="zi"></mt-field>
         <mt-field></mt-field>
-        <mt-button type="primary" class="deng">查询余额</mt-button>
+        <mt-button type="primary" class="deng" @click="yu">查询余额</mt-button>
         <mt-tabbar v-model="selected">
             <mt-tab-item id="账户">
                 <img slot="icon" src=""  @click="account">
@@ -37,6 +37,7 @@
     </div>
 </template>
 <script>
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
@@ -56,6 +57,11 @@ export default {
         }
     },
     methods:{
+        yu(){
+            if(this.username===""){
+                Toast("请输入账号")
+            }
+        },
         actionSheet: function(){
     	// 打开action sheet
       this.sheetVisible = true;

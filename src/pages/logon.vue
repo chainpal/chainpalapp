@@ -21,6 +21,7 @@
 <script>
 
 import api from '@/API/axios'
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
@@ -31,10 +32,11 @@ export default {
         }
     },
     methods:{
-
         account(){
-            if(this.username==="" || this.orgName=== ""){
-                alert("请输入账号")
+            if(this.username===""){
+                Toast("请输入组织代码")
+            }else if(this.orgName=== ""){
+                Toast("请输入账号")
             }
             else{
                 this.$router.push({ path: "/account" });
