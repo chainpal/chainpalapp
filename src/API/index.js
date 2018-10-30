@@ -1,5 +1,4 @@
 import axios from 'axios';
-import getCookie from 'js-cookie';
 
 let host = 'http://demo';
 // var host = '';

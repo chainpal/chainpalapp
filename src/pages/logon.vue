@@ -22,7 +22,6 @@
 
 import api from '@/API/index'
 import { Toast } from 'mint-ui';
-import Cookies from 'js-cookie'
 export default {
     data(){
         return{
@@ -45,7 +44,7 @@ export default {
             }
 
             api.post("/users",qs.stringify(data)).then(res=>{
-                console.log(res.success)
+                // console.log(res.success)
                 console.log(res)
                 if(res.token){
                     this.$router.push({ path: "/account" });
