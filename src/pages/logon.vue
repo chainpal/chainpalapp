@@ -9,8 +9,8 @@
         <div class="logo">
             <img src="../assets/biaoti.png" alt="">
         </div>
-        <mt-field label="组织代码" placeholder="请输入组织代码" v-model="username" class="m zi"></mt-field>
-        <mt-field label="管理员账号" placeholder="请输入账号" v-model="orgName" class="zi"></mt-field>
+        <mt-field label="组织代码" placeholder="请输入组织代码" v-model="orgName" class="m zi"></mt-field>
+        <mt-field label="管理员账号" placeholder="请输入账号" v-model="username" class="zi"></mt-field>
         <mt-field></mt-field>
         <mt-button type="primary" class="deng" @click="account" id="1">登陆</mt-button>
         <div class="button">
@@ -27,10 +27,10 @@ export default {
     data(){
         return{
             //
-            // username:"",
-            // orgName:""
-            username:"Tom",
-            orgName:"Org1"
+            username:"",
+            orgName:""
+            // username:"Tom",
+            // orgName:"Org1"
             //a
         }
     },
@@ -50,7 +50,7 @@ export default {
                 if(res.token){
                     this.$router.push({ path: "/account" });
                 }else{
-                    Toast("请输入正确的组织代码和管理员账号")
+                    Toast("请输入正确的组织代码")
                 }
             })
         }
