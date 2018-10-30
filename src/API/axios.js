@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {Message} from 'element-ui';
 import getCookie from 'js-cookie';
-// Vue.prototype.$ajax = axios
-// Vue.use(axios); 
+
 axios.defaults.timeout = 5000;
 // axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? 'http://192.168.0.201:8080' : 'http://192.168.0.201:8080';
 
@@ -16,7 +15,7 @@ axios.interceptors.request.use(
     const token = getCookie('BokeToken');
     // config.data = JSON.stringify(config.data);
     config.headers = {
-      'content-type':'application/x-www-form-urlencoded'
+      'content-type':'application/x-www-form-urlencoded'  //content-type: application/x-www-form-urlencoded
     };
     return config;
   }, err => {
@@ -93,24 +92,24 @@ axios.interceptors.response.use(
   }
 );
 
-// /**
-//  * 封装get方法
-//  * @param url
-//  * @param data
-//  * @returns {Promise}
-//  */
+/**
+ * 封装get方法
+ * @param url
+ * @param data
+ * @returns {Promise}
+ */
 
-// export function get(url, params = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.get(url, {
-//       params: params
-//     }).then(response => {
-//       resolve(response.data);
-//     }).catch(err => {
-//       reject(err)
-//     })
-//   })
-// }
+export function get(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.get(url, {
+      params: params
+    }).then(response => {
+      resolve(response.data);
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
 
 
 /**
@@ -120,84 +119,49 @@ axios.interceptors.response.use(
  * @returns {Promise}
  */
 
-// export function post(url, data = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.post(url, data)
-//       .then(response => {
-//         resolve(response.data);
-//       }, err => {
-//         reject(err)
-//       })
-//   })
-// }
-
-// /**
-//  * 封装patch请求
-//  * @param url
-//  * @param data
-//  * @returns {Promise}
-//  */
-
-// export function patch(url, data = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.patch(url, data)
-//       .then(response => {
-//         resolve(response.data);
-//       }, err => {
-//         reject(err)
-//       })
-//   })
-// }
-
-// /**
-//  * 封装put请求
-//  * @param url
-//  * @param data
-//  * @returns {Promise}
-//  */
-
-// export function put(url, data = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.put(url, data)
-//       .then(response => {
-//         resolve(response.data);
-//       }, err => {
-//         reject(err)
-//       })
-//   })
-// }
-
-const get=(url, arg)=>{
-    return new Promise((resolve,rehect)=>{
-      axios.get(url,{
-        params:arg,
-      }).then(res=>{
-        resolve(res.data)
-      },()=>{
-        reject("get请求链接失败")
+export function post(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.post(url, data)
+      .then(response => {
+        resolve(response.data);
+      }, err => {
+        reject(err)
       })
-    })
-}
-const post=(url, arg)=>{
-  return new Promise((resolve,rehect)=>{
-    axios({
-      // params:arg,
-      method :'post',
-      url:url,
-      data:arg,
-      changeOrigin:true,
-      headers:{
-        'content-type': 'application/x-www-form-urlencoded'
-      }
-    }).then(res=>{
-      resolve(res.data)
-    }).catch(()=>{
-      reject("post请求链接失败")
-    })
   })
 }
 
-export default {
-get,
-post
+/**
+ * 封装patch请求
+ * @param url
+ * @param data
+ * @returns {Promise}
+ */
+
+export function patch(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.patch(url, data)
+      .then(response => {
+        resolve(response.data);
+      }, err => {
+        reject(err)
+      })
+  })
+}
+
+/**
+ * 封装put请求
+ * @param url
+ * @param data
+ * @returns {Promise}
+ */
+
+export function put(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.put(url, data)
+      .then(response => {
+        resolve(response.data);
+      }, err => {
+        reject(err)
+      })
+  })
 }

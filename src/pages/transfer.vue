@@ -55,8 +55,8 @@ export default {
                 Toast("请输入金额")
             }else{
                 Toast({
-  message: '操作成功',
-  iconClass: 'icon icon-success'
+                    message: '操作成功',
+                    iconClass: 'icon icon-success'
 });
             }
             // this.$router.push({ path: "/account" });

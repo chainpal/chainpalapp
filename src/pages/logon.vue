@@ -20,54 +20,37 @@
 </template>
 <script>
 
-import api from '@/API/axios'
+import api from '@/API/index'
 import { Toast } from 'mint-ui';
+import Cookies from 'js-cookie'
 export default {
     data(){
         return{
             //
-            username:"",
-            orgName:""
+            // username:"",
+            // orgName:""
+            username:"Tom",
+            orgName:"Org1"
             //a
         }
     },
     methods:{
         account(){
-            if(this.username===""){
-                Toast("请输入组织代码")
-            }else if(this.orgName=== ""){
-                Toast("请输入账号")
-            }
-            else{
-                this.$router.push({ path: "/account" });
-            }
-            
-            
-            // post('/user', {
-            //     firstName: 'Fred',
-            //     lastName: 'Flintstone'
-            // })
-            // .then(function (response) {
-            //     console.log(response);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
-
-            // api.get("url"+"//参数").then(res=>{
-
-            // })
-
-            let data={
+            console.log(this.username);
+            console.log(this.orgName);
+            var qs = require('qs');
+            let data = {
                 username:this.username,
                 orgName:this.orgName
             }
-            api.post("http://154.8.210.38:4000/user",data).then(res=>{
-                if(res.error_code==0){
-                    // 
-                    
+
+            api.post("/users",qs.stringify(data)).then(res=>{
+                console.log(res.success)
+                console.log(res)
+                if(res.token){
+                    this.$router.push({ path: "/account" });
                 }else{
-                    // res.msg
+                    Toast("请输入正确的组织代码和管理员账号")
                 }
             })
         }

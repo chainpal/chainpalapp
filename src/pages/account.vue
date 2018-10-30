@@ -37,7 +37,7 @@
     </div>
 </template>
 <script>
-import { Toast } from 'mint-ui';
+import api from '@/API/index'
 export default {
     data(){
         return{
@@ -47,29 +47,20 @@ export default {
         name: '转账',
         method : this.getCamera	// 调用methods中的函数
       },
-//         {
-//         name: '从相册中选择', 
-//         method : this.getLibrary	// 调用methods中的函数
-//         }
 ],
-      // action sheet 默认不显示，为false。操作sheetVisible可以控制显示与隐藏
       sheetVisible: false
         }
     },
     methods:{
         yu(){
-            if(this.username===""){
-                Toast("请输入账号")
-            }
         },
         actionSheet: function(){
     	// 打开action sheet
       this.sheetVisible = true;
     },
-    getCamera: function(){
-      console.log("打开照相机")
-            this.$router.push({ path: "/transfer" });
-    },
+        getCamera: function(){
+        this.$router.push({ path: "/transfer" });
+        },
         account(){
             this.$router.push({ path: "/account" });
         },
