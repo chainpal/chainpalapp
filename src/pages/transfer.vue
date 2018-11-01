@@ -33,7 +33,7 @@
     </div>
 </template>
 <script>
-
+import api from '@/API/index'
 import { Toast } from 'mint-ui';
 export default {
     data(){
@@ -47,19 +47,42 @@ export default {
     },
     methods:{
         account(){
-            if(this.out===""){
-                Toast("请输入转出账户")
-            }else if(this.shift===""){
-                Toast("请输入转入账户")
-            }else if(this.money===""){
-                Toast("请输入金额")
-            }else{
-                Toast({
-                    message: '操作成功',
-                    iconClass: 'icon icon-success'
-});
-            }
+//             if(this.out===""){
+//                 Toast("请输入转出账户")
+//             }else if(this.shift===""){
+//                 Toast("请输入转入账户")
+//             }else if(this.money===""){
+//                 Toast("请输入金额")
+//             }else{
+//                 Toast({
+//                     message: '操作成功',
+//                     iconClass: 'icon icon-success'
+// });
+//             }
             // this.$router.push({ path: "/account" });
+            var qs = require('qs');
+            let data = {
+                
+                // var args = qs.stringify( ["Johnny","Will","10"])
+                "peers" : ["peer0.org1.example.com","peer1.org1.example.com"],
+                "fcn" : "move",
+                "args" : ["Johnny","Will","10"]
+            }
+            
+            // let headers = {
+            //     'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwODM4NzcsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwNDc4Nzd9.A8wKK9BYNGTQ_MNapfXNihr_lve8Qq10sTSij1zRHEE' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            
+            // }
+            api.post("/channels/mychannel/chaincodes/mycc",qs.stringify(data)).then(res=>{
+                // console.log(res.success)
+                console.log(res)
+                if(res.token){
+                    // this.$router.push({ path: "/account" });
+                    // console.log(setToken(token))
+                }else{
+                    Toast("请输入正确的组织代码")
+                }
+            })
         },
         commodity(){
             this.$router.push({ path: "/commodity" });

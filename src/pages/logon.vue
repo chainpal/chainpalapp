@@ -20,14 +20,14 @@
 </template>
 <script>
 
-import api from '@/API/index'
+import api from '@/API/get'
 import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
             //
-            username:"",
-            orgName:""
+            username:"asd",
+            orgName:"Org1"
             // username:"Tom",
             // orgName:"Org1"
             //a
@@ -42,12 +42,15 @@ export default {
                 username:this.username,
                 orgName:this.orgName
             }
-
-            api.post("/users",qs.stringify(data)).then(res=>{
+            let headers = {
+                'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            }
+            api.post("/users",qs.stringify(data),headers).then(res=>{
                 // console.log(res.success)
                 console.log(res)
                 if(res.token){
                     this.$router.push({ path: "/account" });
+                    // console.log(setToken(token))
                 }else{
                     Toast("请输入正确的组织代码")
                 }

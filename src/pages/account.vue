@@ -7,7 +7,7 @@
             <mt-button icon="more" slot="right" @click="actionSheet"></mt-button>
         </mt-header>
         <div class="balance">
-            <p>余额：元</p>
+            <p>余额:{{mas}}元</p>
         </div>
         <mt-field label="账户名" placeholder="请输入账号" v-model="username" class="zi"></mt-field>
         <mt-field></mt-field>
@@ -37,12 +37,15 @@
     </div>
 </template>
 <script>
-import api from '@/API/index'
+import api from '@/API/get'
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
             selected:"账户",
-            username:"",
+            username:"Johnny",
+            mas:"",
+            // num="",
             data: [{
         name: '转账',
         method : this.getCamera	// 调用methods中的函数
@@ -53,13 +56,34 @@ export default {
     },
     methods:{
         yu(){
+            console.log(this.username);
+            var mycars = new Array(this.username)
+            // headers: {
+            //     'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            // }
+            api.get("http://154.8.210.38:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=['"+this.username+"']",{
+            //     headers: {
+            //     'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            // }
+            }).then(res=>{
+            
+                console.log(res);
+                var num= res.replace(/[^0-9]/ig,"");
+                if( num!== ""){
+                    this.mas = num
+                }else{
+                    Toast("请输入正确的账户名")
+                }
+                console.log(num);
+                
+            })
         },
         actionSheet: function(){
     	// 打开action sheet
       this.sheetVisible = true;
     },
         getCamera: function(){
-        this.$router.push({ path: "/transfer" });
+            this.$router.push({ path: "/transfer" });
         },
         account(){
             this.$router.push({ path: "/account" });

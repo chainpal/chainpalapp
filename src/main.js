@@ -12,13 +12,13 @@ import MintUI from 'mint-ui'
 // Vue.prototype.$ajax = axios
 // Vue.use(axios); 
 import 'mint-ui/lib/style.css'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 // Vue.component(Tabbar.name, Tabbar);
 // Vue.component(TabItem.name, TabItem);
 Vue.use(Mint); 
 Vue.use(MintUI)
-Vue.use(Cookies)
+// Vue.use(Cookies)
 // Vue.use(VueResource); 
 Vue.config.productionTip = false
 

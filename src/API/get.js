@@ -30,18 +30,6 @@ const put = (url, arg) => {
         });
     });
 }
-const get = (url, arg) => {
-    return new Promise((resolve, reject) => {
-        axios.get(url, {
-            params: arg,
-            // withCredentials: true
-        }).then((res) => {
-            resolve(res.data);
-        }, () => {
-            reject('get请求链接失败');
-        });
-    });
-}
 const dele = (url, arg) => {
     return new Promise((resolve, reject) => {
         axios.delete(url, {
@@ -60,12 +48,9 @@ const post = (url, arg) => {
             url: url,
             baseURL:'http://154.8.210.38:4000/',
             data:arg,
-            headers: {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwODM4NzcsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwNDc4Nzd9.A8wKK9BYNGTQ_MNapfXNihr_lve8Qq10sTSij1zRHEE'//application/x-www-form-urlencoded  application/json;charset=UTF-8
-                ,"content-type": "application/json"
-                // "content-type": "application/json"
-                // 'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
-            }
+            // headers: {
+            //     'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            // }
         }).then((res) => {
             resolve(res.data);
         }).catch(() => {
@@ -73,24 +58,43 @@ const post = (url, arg) => {
         });
     });
 }
+
+const get = (url, arg) => {
+    return new Promise((resolve, reject) => {
+        axios({
+            method: 'get',
+            url: url,
+            // baseURL:'http://154.8.210.38:4000/',
+            data:arg,
+            // headers: {
+            //     'authorization': 'Bearer '+ res.data.token+'' 
+            // }
+            headers: {
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            }
+        }).then((res) => {
+            resolve(res.data);
+        }).catch(() => {
+            reject('get请求链接失1败');
+        });
+    });
+}
+
 // const get = (url, arg) => {
 //     return new Promise((resolve, reject) => {
-//         axios({
-//             method: 'get',
-//             url: url,
-//             // baseURL:'http://154.8.210.38:4000/',
-//             data:arg,
-//             // headers: {
-//             //     'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwMTAzNzcsInVzZXJuYW1lIjoiMTIzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDA5NzQzNzd9.97Q33oWc_giUjgLvHnsInIlSTzqN6_xdhmr8hLDryR0' //application/x-www-form-urlencoded  application/json;charset=UTF-8
-//             // }
+//         axios.get(url, {
+//             params: arg,
+//             headers: {
+//                 'authorization': 'Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo"' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+//             }
+//             // withCredentials: true
 //         }).then((res) => {
 //             resolve(res.data);
-//         }).catch(() => {
-//             reject('get请求链接失1败');
+//         }, () => {
+//             reject('get请求链接失败');
 //         });
 //     });
 // }
-
 
 export default {
     addHotel(arg) {
