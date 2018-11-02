@@ -43,8 +43,12 @@ export default {
                 orgName:this.orgName
             }
             let headers = {
+                // 'content-type': 'application/json'
                 'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
+            console.log(qs.stringify(data));
+            console.log(data);
+            
             api.post("/users",qs.stringify(data),headers).then(res=>{
                 // console.log(res.success)
                 console.log(res)

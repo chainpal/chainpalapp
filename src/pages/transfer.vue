@@ -33,15 +33,15 @@
     </div>
 </template>
 <script>
-import api from '@/API/index'
+import api from '@/API/get'
 import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
             //
-            out:"",
-            shift:"",
-            money:"",
+            out:"Johnny",
+            shift:"Will",
+            money:"1",
             selected:"账户"
         }
     },
@@ -62,23 +62,34 @@ export default {
             // this.$router.push({ path: "/account" });
             var qs = require('qs');
             let data = {
-                
-                // var args = qs.stringify( ["Johnny","Will","10"])
-                "peers" : ["peer0.org1.example.com","peer1.org1.example.com"],
-                "fcn" : "move",
-                "args" : ["Johnny","Will","10"]
+                peers : ["peer0.org1.example.com","peer1.org1.example.com"],
+                fcn : "move",
+                args : ["Johnny","Will","10"]
+                // "peers" : ["peer0.org1.example.com","peer1.org1.example.com"],
+                // "fcn" : "move",
+                // "args" : [this.out,this.shift,this.money]
             }
+            console.log(data);
+            console.log(qs.stringify(data));
+            console.log(JSON.stringify(data));
+            // var aa = qs.stringify(data);
+            // var b = JSON.stringify(aa)
+            // var aa = JSON.stringify(data)
+            // var b = qs.stringify(aa)
+            // alert(b)
+            console.log(JSON.stringify(qs.stringify(data)));
             
-            // let headers = {
-            //     'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwODM4NzcsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwNDc4Nzd9.A8wKK9BYNGTQ_MNapfXNihr_lve8Qq10sTSij1zRHEE' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+
             
-            // }
-            api.post("/channels/mychannel/chaincodes/mycc",qs.stringify(data)).then(res=>{
+            let headers = {
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDExNTcwMjksInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExMjEwMjl9.Y2sM7UzRAcgmT-WvB5v3wgD_QTgC80UTF_14-nBKQ_4',
+                'content-type': 'application/json' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+            }
+            api.post("/channels/mychannel/chaincodes/mycc",JSON.stringify(data),headers).then(res=>{
                 // console.log(res.success)
                 console.log(res)
                 if(res.token){
-                    // this.$router.push({ path: "/account" });
-                    // console.log(setToken(token))
+                    Toast("wqewq")
                 }else{
                     Toast("请输入正确的组织代码")
                 }

@@ -41,14 +41,16 @@ const dele = (url, arg) => {
         });
     });
 }
-const post = (url, arg) => {
+const post = (url, arg, headers) => {
     return new Promise((resolve, reject) => {
         axios({
             method: 'post',
             url: url,
             baseURL:'http://154.8.210.38:4000/',
             data:arg,
+            headers : headers
             // headers: {
+            //     'content-type': 'application/json'
             //     'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             // }
         }).then((res) => {
@@ -59,7 +61,7 @@ const post = (url, arg) => {
     });
 }
 
-const get = (url, arg) => {
+const get = (url, arg,headers) => {
     return new Promise((resolve, reject) => {
         axios({
             method: 'get',
@@ -69,8 +71,9 @@ const get = (url, arg) => {
             // headers: {
             //     'authorization': 'Bearer '+ res.data.token+'' 
             // }
+            // headers:headers,
             headers: {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDExNTcwMjksInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExMjEwMjl9.Y2sM7UzRAcgmT-WvB5v3wgD_QTgC80UTF_14-nBKQ_4' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyMDU5OTUsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExNjk5OTV9.CGmIyCP5Mbh0R6uBLjR4s2P1JSD2jFwSC_cLYbT-2V8' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
         }).then((res) => {
             resolve(res.data);
