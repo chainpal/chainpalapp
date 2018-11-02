@@ -65,24 +65,16 @@ export default {
                 peers : ["peer0.org1.example.com","peer1.org1.example.com"],
                 fcn : "move",
                 args : ["Johnny","Will","10"]
-                // "peers" : ["peer0.org1.example.com","peer1.org1.example.com"],
-                // "fcn" : "move",
-                // "args" : [this.out,this.shift,this.money]
             }
             console.log(data);
             console.log(qs.stringify(data));
             console.log(JSON.stringify(data));
-            // var aa = qs.stringify(data);
-            // var b = JSON.stringify(aa)
-            // var aa = JSON.stringify(data)
-            // var b = qs.stringify(aa)
-            // alert(b)
             console.log(JSON.stringify(qs.stringify(data)));
             
 
             
             let headers = {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDExNTcwMjksInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExMjEwMjl9.Y2sM7UzRAcgmT-WvB5v3wgD_QTgC80UTF_14-nBKQ_4',
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyMDU5OTUsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExNjk5OTV9.CGmIyCP5Mbh0R6uBLjR4s2P1JSD2jFwSC_cLYbT-2V8',
                 'content-type': 'application/json' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
             api.post("/channels/mychannel/chaincodes/mycc",JSON.stringify(data),headers).then(res=>{
