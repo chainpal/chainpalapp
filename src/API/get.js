@@ -70,7 +70,7 @@ const get = (url, arg) => {
             //     'authorization': 'Bearer '+ res.data.token+'' 
             // }
             headers: {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDExNTcwMjksInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExMjEwMjl9.Y2sM7UzRAcgmT-WvB5v3wgD_QTgC80UTF_14-nBKQ_4' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
         }).then((res) => {
             resolve(res.data);
