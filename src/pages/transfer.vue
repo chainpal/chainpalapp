@@ -34,6 +34,7 @@
 </template>
 <script>
 import api from '@/API/get'
+import Qs from 'qs'
 import { Toast } from 'mint-ui';
 export default {
     data(){
@@ -68,16 +69,15 @@ export default {
             }
             console.log(data);
             console.log(qs.stringify(data));
+            console.log(Qs.stringify(data));
             console.log(JSON.stringify(data));
             console.log(JSON.stringify(qs.stringify(data)));
-            
-
-            
             let headers = {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyMDU5OTUsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExNjk5OTV9.CGmIyCP5Mbh0R6uBLjR4s2P1JSD2jFwSC_cLYbT-2V8',
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyNDQzMTcsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEyMDgzMTd9.Q-F_KJ4nt8hkMzrBxSX08SrjiejN6uDuwcXz6A3AKSg',
+                // 'content-type': 'application/x-www-form-urlencoded'
                 'content-type': 'application/json' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
-            api.post("/channels/mychannel/chaincodes/mycc",JSON.stringify(data),headers).then(res=>{
+            api.post("/channels/mychannel/chaincodes/mycc",data,headers).then(res=>{
                 // console.log(res.success)
                 console.log(res)
                 if(res.token){

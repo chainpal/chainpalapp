@@ -21,6 +21,7 @@
 <script>
 
 import api from '@/API/get'
+import Qs from 'qs'
 import { Toast } from 'mint-ui';
 export default {
     data(){
@@ -49,7 +50,7 @@ export default {
             console.log(qs.stringify(data));
             console.log(data);
             
-            api.post("/users",qs.stringify(data),headers).then(res=>{
+            api.post("/users",Qs.stringify(data),headers).then(res=>{
                 // console.log(res.success)
                 console.log(res)
                 if(res.token){

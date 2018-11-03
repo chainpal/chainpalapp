@@ -73,8 +73,7 @@ const get = (url, arg,headers) => {
             // }
             // headers:headers,
             headers: {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyMDU5OTUsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDExNjk5OTV9.CGmIyCP5Mbh0R6uBLjR4s2P1JSD2jFwSC_cLYbT-2V8' //application/x-www-form-urlencoded  application/json;charset=UTF-8
-            }
+                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyNDI2NTAsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEyMDY2NTB9.JAHaoZxYNACTivi-7ADtJwUEfQFvh5mndCr_J_q7Bto'}
         }).then((res) => {
             resolve(res.data);
         }).catch(() => {
