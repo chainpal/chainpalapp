@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Toast } from 'mint-ui';
 
 let host = 'http://demo';
 // var host = '';
@@ -48,15 +49,15 @@ const post = (url, arg, headers) => {
             url: url,
             baseURL:'http://154.8.210.38:4000/',
             data:arg,
-            headers : headers
-            // headers: {
-            //     'content-type': 'application/json'
-            //     'content-type': 'application/x-www-form-urlencoded' //application/x-www-form-urlencoded  application/json;charset=UTF-8
-            // }
+            headers : headers,
+            timeout: 3800
         }).then((res) => {
             resolve(res.data);
         }).catch(() => {
-            reject('post请求链接失败');
+            Toast("请输入正确的账户，或者重新登录")
+            Indicator.open({
+                spinnerType: 'fading-circle'
+              });
         });
     });
 }
@@ -73,11 +74,14 @@ const get = (url, arg,headers) => {
             // }
             // headers:headers,
             headers: {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyNDI2NTAsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEyMDY2NTB9.JAHaoZxYNACTivi-7ADtJwUEfQFvh5mndCr_J_q7Bto'}
+                'authorization': 'Bearer '+localStorage.getItem("token")+'  '
+            }
+                // 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyNDI2NTAsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEyMDY2NTB9.JAHaoZxYNACTivi-7ADtJwUEfQFvh5mndCr_J_q7Bto'}
         }).then((res) => {
             resolve(res.data);
         }).catch(() => {
             reject('get请求链接失1败');
+            Toast("请重新登陆")
         });
     });
 }

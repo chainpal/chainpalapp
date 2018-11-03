@@ -36,54 +36,36 @@
 import api from '@/API/get'
 import Qs from 'qs'
 import { Toast } from 'mint-ui';
+import { Indicator } from 'mint-ui';
 export default {
     data(){
         return{
             //
-            out:"Johnny",
-            shift:"Will",
-            money:"1",
+            out:"",
+            shift:"",
+            money:"",
             selected:"账户"
         }
     },
     methods:{
         account(){
-//             if(this.out===""){
-//                 Toast("请输入转出账户")
-//             }else if(this.shift===""){
-//                 Toast("请输入转入账户")
-//             }else if(this.money===""){
-//                 Toast("请输入金额")
-//             }else{
-//                 Toast({
-//                     message: '操作成功',
-//                     iconClass: 'icon icon-success'
-// });
-//             }
-            // this.$router.push({ path: "/account" });
             var qs = require('qs');
             let data = {
-                peers : ["peer0.org1.example.com","peer1.org1.example.com"],
-                fcn : "move",
-                args : ["Johnny","Will","10"]
+                "peers": ["peer0.org1.example.com","peer0.org2.example.com"],
+                "fcn":"move",
+                "args":[this.out,this.shift,this.money]
             }
-            console.log(data);
-            console.log(qs.stringify(data));
-            console.log(Qs.stringify(data));
-            console.log(JSON.stringify(data));
-            console.log(JSON.stringify(qs.stringify(data)));
             let headers = {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEyNDQzMTcsInVzZXJuYW1lIjoiYXNkIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEyMDgzMTd9.Q-F_KJ4nt8hkMzrBxSX08SrjiejN6uDuwcXz6A3AKSg',
-                // 'content-type': 'application/x-www-form-urlencoded'
+                'authorization': 'Bearer '+localStorage.getItem("token")+'',
                 'content-type': 'application/json' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
             api.post("/channels/mychannel/chaincodes/mycc",data,headers).then(res=>{
-                // console.log(res.success)
                 console.log(res)
-                if(res.token){
-                    Toast("wqewq")
-                }else{
-                    Toast("请输入正确的组织代码")
+                if(res){
+                    Toast({
+                    message: '操作成功',
+                    iconClass: 'icon icon-success'
+                    });
                 }
             })
         },

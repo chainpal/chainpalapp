@@ -38,12 +38,13 @@
 </template>
 <script>
 import api from '@/API/get'
+// import cook from '@/API/cook'
 import { Toast } from 'mint-ui';
 export default {
     data(){
         return{
             selected:"账户",
-            username:"Johnny",
+            username:"",
             mas:"",
             // num="",
             data: [{
@@ -59,19 +60,18 @@ export default {
             console.log(this.username);
             var mycars = new Array(this.username)
              let headers = {
-                'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
+                 'authorization': 'Bearer '+localStorage.getItem("name")+'  '
+                // 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDEwNzAyMjksInVzZXJuYW1lIjoiMjEzIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1NDEwMzQyMjl9.KK53cLEbQhclixNW6DxWa7DalZ3zn4AW1YPHHmVO-fo' //application/x-www-form-urlencoded  application/json;charset=UTF-8
             }
             api.get("http://154.8.210.38:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=['"+this.username+"']"
             ).then(res=>{
-            
-                console.log(res);
+                   
                 var num= res.replace(/[^0-9]/ig,"");
                 if( num!== ""){
                     this.mas = num
                 }else{
                     Toast("请输入正确的账户名")
                 }
-                console.log(num);
                 
             })
         },
