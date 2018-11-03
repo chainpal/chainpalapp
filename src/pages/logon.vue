@@ -1,7 +1,5 @@
 <template>
     <div class="logon">
-        <mt-header fixed title="扶贫链Demo" class="fu">
-        </mt-header>
         <div class="logo">
             <img src="../assets/biaoti.png" alt="">
         </div>
@@ -50,10 +48,13 @@ export default {
 </script>
 <style lang="less" scoped>
     .logon{
+        .mint-cell{
+            padding-left: 10%;
+        }
         .logo{
-            margin-top: 80px;
+            margin-top: 172px;
             img{
-                width: 100%;
+                width: 80%;
                 height: 30%;
                 // height: 85px;
             }

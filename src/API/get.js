@@ -55,9 +55,6 @@ const post = (url, arg, headers) => {
             resolve(res.data);
         }).catch(() => {
             Toast("请输入正确的账户，或者重新登录")
-            Indicator.open({
-                spinnerType: 'fading-circle'
-              });
         });
     });
 }

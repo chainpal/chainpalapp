@@ -65,12 +65,27 @@ export default {
             }
             api.get("http://154.8.210.38:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=['"+this.username+"']"
             ).then(res=>{
+                   console.log(res);
                    
-                var num= res.replace(/[^0-9]/ig,"");
-                if( num!== ""){
+                // var num= res.replace(/[^0-9]/ig,"");
+                // if( num!== ""){
+                //     this.mas = num
+                // }else{
+                //     Toast("请输入正确的账户名")
+                //     this.mas = ""
+                // }
+                // if(return str.contains(substr);)
+                var Cts = "bblText";
+ 
+                if(res.indexOf('Error":"Nil amount for' ) > 0 )
+                {
+                    Toast("请输入正确的账户名")
+                    this.mas = ""
+                }else if('now has /[^0-9]/ after the move'){
+                    var num= res.replace(/[^0-9]/ig,"");
                     this.mas = num
                 }else{
-                    Toast("请输入正确的账户名")
+                    Toast("请求失败")
                 }
                 
             })

@@ -2,7 +2,7 @@
     <div class="transfer">
         <mt-header fixed title="转账" class="fu">
             <router-link to="/" slot="left">
-            <mt-button icon="back">返回</mt-button>
+            <mt-button icon="back" @click="go">返回</mt-button>
             </router-link>
             <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
@@ -69,6 +69,10 @@ export default {
                 }
             })
         },
+        go:function(){
+          this.$router.go(-1);//返回上一页
+      } ,
+
         commodity(){
             this.$router.push({ path: "/commodity" });
         },
