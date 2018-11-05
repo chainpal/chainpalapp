@@ -3,12 +3,14 @@
         <div class="logo">
             <img src="../assets/biaoti.png" alt="">
         </div>
-        <mt-field label="组织代码" placeholder="请输入组织代码" v-model="orgName" class="m zi"></mt-field>
+        <!-- <mt-button type="primary">primary</mt-button> -->
+        <div class="page-part">
+        <mt-field label='组织代码      ' placeholder="请输入组织代码" v-model="orgName" class="m zi"></mt-field>
         <mt-field label="管理员账号" placeholder="请输入账号" v-model="username" class="zi"></mt-field>
-        <mt-field></mt-field>
+        </div>
         <mt-button type="primary" class="deng" @click="account" id="1">登录</mt-button>
         <div class="button">
-            <span>Copyright 2018 Beijing Fenbuzhihui Technology Co., Ltd. All rights reserved.</span>
+            <span>Copyright 2018 Beijing Fenbuzhihui Technology Co., Ltd.</br> All rights reserved.</span>
         </div>
     </div>
 </template>
@@ -49,10 +51,10 @@ export default {
 <style lang="less" scoped>
     .logon{
         .mint-cell{
-            padding-left: 10%;
+            // padding-left: 10%;
         }
         .logo{
-            margin-top: 172px;
+            margin-top: 50px;
             img{
                 width: 80%;
                 height: 30%;
@@ -64,9 +66,10 @@ export default {
         }
         .zi{
             font-weight: 900;
+            text-align: left;
         }
         .deng{
-            width: 90%;
+            width: 100%;
             margin-top: 40px;
         }
         .button{

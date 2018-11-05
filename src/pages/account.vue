@@ -9,24 +9,25 @@
         <div class="balance">
             <p>余额:{{mas}}元</p>
         </div>
+        <div class="page-part">
         <mt-field label="账户名" placeholder="请输入账号" v-model="username" class="zi"></mt-field>
-        <mt-field></mt-field>
+        </div>
         <mt-button type="primary" class="deng" @click="yu">查询余额</mt-button>
         <mt-tabbar v-model="selected">
             <mt-tab-item id="账户">
-                <img slot="icon" src=""  @click="account">
+                <img slot="icon" src="../assets/logo.png"  @click="account">
                 账户
             </mt-tab-item>
             <mt-tab-item id="商品" >
-                <img slot="icon" src="" @click="commodity">
+                <img slot="icon" src="../assets/logo.png" @click="commodity">
                 商品
             </mt-tab-item>
             <mt-tab-item id="信息">
-                <img slot="icon" src=""  @click="message">
+                <img slot="icon" src="../assets/logo.png"  @click="message">
                 信息
             </mt-tab-item>
             <mt-tab-item id="设置">
-                <img slot="icon" src="" @click="set">
+                <img slot="icon" src="../assets/logo.png" @click="set">
                 设置
             </mt-tab-item>
         </mt-tabbar>
@@ -128,7 +129,7 @@ export default {
             }
         }
         .deng{
-            width: 90%;
+            width: 100%;
             margin-top: 40px;
         }
     }

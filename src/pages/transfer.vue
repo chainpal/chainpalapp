@@ -2,31 +2,33 @@
     <div class="transfer">
         <mt-header fixed title="转账" class="fu">
             <router-link to="/" slot="left">
-            <mt-button icon="back" @click="go">返回</mt-button>
+            <mt-button icon="back" @click="go"></mt-button>
+            <!-- $router.back(-1) -->
             </router-link>
             <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
+        <div class="page-part">
         <mt-field label="转出账户" placeholder="请输入转出来源账户" v-model="out" class="m zi"></mt-field>
         <mt-field label="转入账户" placeholder="请输入转账目的账户" v-model="shift" class="zi"></mt-field>
         <mt-field label="转账金额" placeholder="请输入金额" v-model="money" class="zi"></mt-field>
-        <mt-field></mt-field>
+        </div>
         <mt-button type="primary" class="deng" @click="account">转账</mt-button>
         
         <mt-tabbar v-model="selected">
             <mt-tab-item id="账户">
-                <img slot="icon" src=""  @click="account">
+                <img slot="icon" src="../assets/logo.png"  @click="account">
                 账户
             </mt-tab-item>
             <mt-tab-item id="商品" >
-                <img slot="icon" src="" @click="commodity">
+                <img slot="icon" src="../assets/logo.png" @click="commodity">
                 商品
             </mt-tab-item>
             <mt-tab-item id="信息">
-                <img slot="icon" src=""  @click="message">
+                <img slot="icon" src="../assets/logo.png"  @click="message">
                 信息
             </mt-tab-item>
             <mt-tab-item id="设置">
-                <img slot="icon" src="" @click="set">
+                <img slot="icon" src="../assets/logo.png" @click="set">
                 设置
             </mt-tab-item>
         </mt-tabbar>
@@ -71,6 +73,7 @@ export default {
         },
         go:function(){
           this.$router.go(-1);//返回上一页
+          console.log(this.$router)
       } ,
 
         commodity(){
@@ -102,8 +105,8 @@ export default {
             font-weight: 900;
         }
         .deng{
-            width: 90%;
-            // margin-top: 40px;
+            width: 100%;
+            margin-top: 15px;
         }
         .button{
             position: relative;

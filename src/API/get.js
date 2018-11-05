@@ -54,7 +54,7 @@ const post = (url, arg, headers) => {
         }).then((res) => {
             resolve(res.data);
         }).catch(() => {
-            Toast("请输入正确的账户，或者重新登录")
+            Toast("请输入正确的账户或者重新登录")
         });
     });
 }
